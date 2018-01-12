@@ -25,7 +25,7 @@ userRouter.route('/geolocation')
 
     geoMemoizationFn({ ip: req.ip })
       .then( result => {
-        res( result );
+        res.send( result );
       })
       .catch( err => next(err) );
 
