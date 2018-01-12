@@ -22,7 +22,7 @@ userRouter.route('/geolocation')
         return next(error);
       }
 
-      res.send('test');
+      res.send( response );
     });
   });
 
