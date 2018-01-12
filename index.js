@@ -17,6 +17,10 @@ userRouter.route('/geolocation')
     res.send(req.ip);
   });
 
+app.use((err, req, res, next) =>{
+  console.log( err );
+});
+
 app.listen(10010, function () {
   console.log('This Server is running on the port ' + this.address().port );
 });
