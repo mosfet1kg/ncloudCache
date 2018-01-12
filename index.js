@@ -17,9 +17,7 @@ app.use('/user', userRouter);
 
 userRouter.route('/geolocation')
   .get( (req, res, next) => {
-    const ip = req.ip.replace('::ffff:','');
-
-    geolocationApi.getLocation({ ip }, (error, response) => {
+    geolocationApi.getLocation({ ip: req.ip }, (error, response) => {
       if ( error ) {
         return next(error);
       }
