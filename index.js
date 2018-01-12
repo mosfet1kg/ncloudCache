@@ -10,7 +10,7 @@ const userRouter = express.Router();
 
 const memoize = require('./helpers/cache').memoize;
 const geolocationApi = require('./helpers/geolocation');
-const geoMemoizationFn = memoize( geolocationApi.getLocation, 10000);
+const geoMemoizationFn = memoize( geolocationApi.getLocation, 10);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
