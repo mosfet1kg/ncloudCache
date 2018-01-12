@@ -1,6 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const redisClient = require('./helpers/redis');
+
+redisClient.connect();
 
 const app = express();
 const userRouter = express.Router();
@@ -35,18 +38,13 @@ app.listen(10010, function () {
   console.log('This Server is running on the port ' + this.address().port);
 });
 
-// const a = (a, b, c) => {
-//   // console.log(a,b,c);
-// }
-// const memoize = require('./helpers/cache').memoize;
-//
-// const c = memoize( a, 100);
-// c(1,2,3)
+const memoize = require('./helpers/cache').memoize;
 
-const redisClient = require('./helpers/redis');
-redisClient.connect();
+const geoMemoizationFn = memoize( geolocationApi.getLocation, 10000);
 
-const client = redisClient.getRedisClient();
-client.get('a', (err, res)=>{
-  console.log( err, res);
-});
+geoMemoizationFn({ip: '143.248.142.77'})
+  .then(res=>{
+    console.log( res );
+  });
+
+
