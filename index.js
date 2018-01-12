@@ -46,7 +46,7 @@ app.listen(10010, function () {
 const redisClient = require('./helpers/redis');
 redisClient.connect();
 
-const client = redisClient.getClient();
+const client = redisClient.getRedisClient();
 client.get('a', (err, res)=>{
   console.log( err, res);
 });
