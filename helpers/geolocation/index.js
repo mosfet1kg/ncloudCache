@@ -9,7 +9,7 @@ const client = ncloud.createClient({
 module.exports = (function() {
   return {
     getLocation: ({ ip }, callback ) => {
-      client.openapi.geolocation.findLocation({ ip }, (error, response) => {
+      client.openapi.geolocation.findLocation({ ip, ext: 't' }, (error, response) => {
         if ( error ) {
           return callback( error );
         }
