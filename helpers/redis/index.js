@@ -1,12 +1,14 @@
 const Redis = require('ioredis');
 let redisClient = null;
 
+const { ['REDIS_HOST']: host, ['REDIS_PORT']: port } = process.env;
+
 module.exports = (function() {
   return {
     connect: () => {
       redisClient = new Redis({
-        port: 6379,          // Redis port
-        host: 'redis-i578.cdb.ntruss.com',   // Redis host
+        host,
+        port
       });
     },
     getRedisClient: () => {
